@@ -51,9 +51,13 @@ app.get('/health', async (req, res) => {
   }
 });
 
-// API routes will be added here
-// app.use('/api/auth', authRoutes);
-// app.use('/api/users', userRoutes);
+// Import routes
+import authRoutes from './routes/auth';
+import userRoutes from './routes/users';
+
+// API routes
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
 // app.use('/api/products', productRoutes);
 // app.use('/api/orders', orderRoutes);
 
