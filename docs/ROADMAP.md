@@ -15,11 +15,11 @@ Create a comprehensive beach lifestyle and water activities platform that serves
   - [x] Set up MongoDB database and connection
   - [x] Create basic Express.js server with middleware
 
-- [ ] **Database Design**
-  - [ ] Design User schema (guest/member/admin roles)
-  - [ ] Design Product schema (categories, inventory, pricing)
-  - [ ] Design Order schema (items, status, payment info)
-  - [ ] Set up database indexes and relationships
+- [x] **Database Design**
+  - [x] Design User schema (guest/member/admin roles)
+  - [x] Design Product schema (categories, inventory, pricing)
+  - [x] Design Order schema (items, status, payment info)
+  - [x] Set up database indexes and relationships
 
 #### Week 2: Authentication & User Management
 - [ ] **User Authentication**
