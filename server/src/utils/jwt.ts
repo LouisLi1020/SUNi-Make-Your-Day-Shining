@@ -33,11 +33,11 @@ export const generateToken = (user: IUser, options: JWTOptions = {}): string => 
 
   const tokenOptions = { ...defaultOptions, ...options };
 
-  return jwt.sign(payload, process.env.JWT_SECRET!, {
-    expiresIn: tokenOptions.expiresIn,
+  return jwt.sign(payload, process.env.JWT_SECRET as string, {
+    expiresIn: tokenOptions.expiresIn as any,
     issuer: tokenOptions.issuer,
     audience: tokenOptions.audience
-  });
+  } as any);
 };
 
 // Generate refresh token
@@ -48,11 +48,11 @@ export const generateRefreshToken = (user: IUser): string => {
     role: user.role
   };
 
-  return jwt.sign(payload, process.env.JWT_SECRET!, {
+  return jwt.sign(payload, process.env.JWT_SECRET as string, {
     expiresIn: '30d', // Refresh token lasts 30 days
     issuer: 'suni-platform',
     audience: 'suni-refresh'
-  });
+  } as any);
 };
 
 // Verify JWT token

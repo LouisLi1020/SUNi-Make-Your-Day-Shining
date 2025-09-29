@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Suni - Beach Lifestyle & Water Activities Platform",
   "private": true,
-  "workspaces": [
-    "client",
-    "server",
-    "shared"
-  ],
+  "workspaces": {
+    "packages": [
+      "client",
+      "server"
+    ]
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:client": "cd client && npm run dev",

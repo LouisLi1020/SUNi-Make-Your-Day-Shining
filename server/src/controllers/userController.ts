@@ -166,7 +166,7 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
     const { id } = req.params;
 
     // Prevent admin from deleting themselves
-    if (id === req.user?._id.toString()) {
+    if (id === (req.user?._id as any).toString()) {
       return res.status(400).json({
         success: false,
         message: 'You cannot delete your own account'
@@ -202,7 +202,7 @@ export const toggleUserStatus = async (req: Request, res: Response, next: NextFu
     const { isActive } = req.body;
 
     // Prevent admin from deactivating themselves
-    if (id === req.user?._id.toString() && isActive === false) {
+    if (id === (req.user?._id as any).toString() && isActive === false) {
       return res.status(400).json({
         success: false,
         message: 'You cannot deactivate your own account'

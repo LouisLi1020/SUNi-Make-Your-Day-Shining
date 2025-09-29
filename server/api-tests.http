@@ -1,0 +1,260 @@
+### Suni API Tests
+### 使用 REST Client 擴展來運行這些測試
+
+@baseUrl = http://localhost:5000
+@apiUrl = {{baseUrl}}/api
+
+### Variables
+@testEmail = test@example.com
+@testPassword = test123456
+@adminEmail = admin@suni.com
+@adminPassword = admin123456
+
+### 1. Health Check
+GET {{baseUrl}}/health
+
+### 2. Root Endpoint
+GET {{baseUrl}}/
+
+### 3. User Registration
+POST {{apiUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "{{testEmail}}",
+  "name": "Test User",
+  "password": "{{testPassword}}",
+  "confirmPassword": "{{testPassword}}"
+}
+
+### 4. User Login
+POST {{apiUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{testEmail}}",
+  "password": "{{testPassword}}"
+}
+
+### 5. Admin Login
+POST {{apiUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{adminEmail}}",
+  "password": "{{adminPassword}}"
+}
+
+### 6. Get Profile (需要認證)
+GET {{apiUrl}}/auth/profile
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 7. Update Profile (需要認證)
+PUT {{apiUrl}}/auth/profile
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "Updated Test User",
+  "profile": {
+    "firstName": "Updated",
+    "lastName": "User",
+    "phone": "+1234567890",
+    "gender": "male"
+  },
+  "preferences": {
+    "language": "en",
+    "currency": "USD",
+    "notifications": {
+      "email": true,
+      "sms": false,
+      "push": true
+    },
+    "marketing": false
+  }
+}
+
+### 8. Change Password (需要認證)
+PUT {{apiUrl}}/auth/change-password
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "currentPassword": "{{testPassword}}",
+  "newPassword": "newtest123456",
+  "confirmPassword": "newtest123456"
+}
+
+### 9. Refresh Token
+POST {{apiUrl}}/auth/refresh-token
+Content-Type: application/json
+
+{
+  "refreshToken": "{{$dotenv REFRESH_TOKEN}}"
+}
+
+### 10. Forgot Password
+POST {{apiUrl}}/auth/forgot-password
+Content-Type: application/json
+
+{
+  "email": "{{testEmail}}"
+}
+
+### 11. Reset Password (使用從 forgot-password 獲得的 token)
+POST {{apiUrl}}/auth/reset-password
+Content-Type: application/json
+
+{
+  "token": "{{$dotenv RESET_TOKEN}}",
+  "password": "{{testPassword}}",
+  "confirmPassword": "{{testPassword}}"
+}
+
+### 12. Logout (需要認證)
+POST {{apiUrl}}/auth/logout
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 13. Get All Users (Admin only)
+GET {{apiUrl}}/users
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+
+### 14. Get User by ID (需要認證)
+GET {{apiUrl}}/users/{{$dotenv USER_ID}}
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 15. Search Users (需要認證)
+GET {{apiUrl}}/users/search?q=test
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 16. Get User Stats (Admin only)
+GET {{apiUrl}}/users/stats
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+
+### 17. Create User (Admin only)
+POST {{apiUrl}}/users
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+Content-Type: application/json
+
+{
+  "email": "newuser@example.com",
+  "name": "New User",
+  "password": "password123",
+  "role": "member"
+}
+
+### 18. Update User (需要認證，本人或管理員)
+PUT {{apiUrl}}/users/{{$dotenv USER_ID}}
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "Updated Name",
+  "profile": {
+    "firstName": "Updated",
+    "lastName": "Name"
+  }
+}
+
+### 19. Toggle User Status (Admin only)
+PATCH {{apiUrl}}/users/{{$dotenv USER_ID}}/status
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+Content-Type: application/json
+
+{
+  "isActive": false
+}
+
+### 20. Delete User (Admin only)
+DELETE {{apiUrl}}/users/{{$dotenv USER_ID}}
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+
+### 錯誤測試
+
+### 21. Invalid Login
+POST {{apiUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "invalid@example.com",
+  "password": "wrongpassword"
+}
+
+### 22. Unauthorized Access
+GET {{apiUrl}}/auth/profile
+
+### 23. Invalid Registration Data
+POST {{apiUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "invalid-email",
+  "name": "",
+  "password": "123",
+  "confirmPassword": "456"
+}
+
+### 24. Duplicate Email Registration
+POST {{apiUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "{{testEmail}}",
+  "name": "Another User",
+  "password": "{{testPassword}}",
+  "confirmPassword": "{{testPassword}}"
+}
+
+### 25. Rate Limiting Test (多次快速請求)
+POST {{apiUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{testEmail}}",
+  "password": "wrongpassword"
+}
+
+### 26. Rate Limiting Test (多次快速請求)
+POST {{apiUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{testEmail}}",
+  "password": "wrongpassword"
+}
+
+### 27. Rate Limiting Test (多次快速請求)
+POST {{apiUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{testEmail}}",
+  "password": "wrongpassword"
+}
+
+### 28. Rate Limiting Test (多次快速請求)
+POST {{apiUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{testEmail}}",
+  "password": "wrongpassword"
+}
+
+### 29. Rate Limiting Test (多次快速請求)
+POST {{apiUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{testEmail}}",
+  "password": "wrongpassword"
+}
+
+### 30. Rate Limiting Test (多次快速請求)
+POST {{apiUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{testEmail}}",
+  "password": "wrongpassword"
+}

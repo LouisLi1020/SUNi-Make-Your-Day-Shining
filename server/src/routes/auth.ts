@@ -27,6 +27,6 @@ router.use(authenticate); // All routes below require authentication
 router.post('/logout', logout);
 router.get('/profile', getProfile);
 router.put('/profile', updateProfile);
-router.put('/change-password', changePassword);
+router.put('/change-password', changePassword as any);
 
 export default router;

@@ -307,9 +307,7 @@ productSchema.virtual('isAvailable').get(function() {
   return this.inventory.quantity > 0 || this.inventory.allowBackorder;
 });
 
-// Indexes for performance
-productSchema.index({ sku: 1 });
-productSchema.index({ 'seo.slug': 1 });
+// Indexes for performance (avoid duplicating indexes already defined via `unique` on paths)
 productSchema.index({ category: 1, subcategory: 1 });
 productSchema.index({ status: 1 });
 productSchema.index({ featured: 1 });

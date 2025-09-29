@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, RequestHandler } from 'express';
 import { User, UserRole, IUser } from '../models/User';
 import { generateTokenPair, verifyToken, JWTPayload } from '../utils/jwt';
 import crypto from 'crypto';
@@ -51,7 +51,7 @@ interface ChangePasswordRequest extends Request {
 }
 
 // Register new user
-export const register = async (req: RegisterRequest, res: Response, next: NextFunction) => {
+export const register: RequestHandler = async (req: RegisterRequest, res: Response, next: NextFunction) => {
   try {
     const { email, name, password, confirmPassword, role = UserRole.MEMBER } = req.body;
 
@@ -118,7 +118,7 @@ export const register = async (req: RegisterRequest, res: Response, next: NextFu
 };
 
 // Login user
-export const login = async (req: LoginRequest, res: Response, next: NextFunction) => {
+export const login: RequestHandler = async (req: LoginRequest, res: Response, next: NextFunction) => {
   try {
     const { email, password, rememberMe = false } = req.body;
 
@@ -200,7 +200,7 @@ export const login = async (req: LoginRequest, res: Response, next: NextFunction
 };
 
 // Logout user
-export const logout = async (req: Request, res: Response, next: NextFunction) => {
+export const logout: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {
     // In a stateless JWT system, logout is handled client-side
     // by removing the token from storage
@@ -216,7 +216,7 @@ export const logout = async (req: Request, res: Response, next: NextFunction) =>
 };
 
 // Get current user profile
-export const getProfile = async (req: Request, res: Response, next: NextFunction) => {
+export const getProfile: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {
     if (!req.user) {
       return res.status(401).json({
@@ -246,7 +246,7 @@ export const getProfile = async (req: Request, res: Response, next: NextFunction
 };
 
 // Update user profile
-export const updateProfile = async (req: Request, res: Response, next: NextFunction) => {
+export const updateProfile: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {
     if (!req.user) {
       return res.status(401).json({
@@ -286,7 +286,7 @@ export const updateProfile = async (req: Request, res: Response, next: NextFunct
 };
 
 // Change password
-export const changePassword = async (req: ChangePasswordRequest, res: Response, next: NextFunction) => {
+export const changePassword = async (req: any, res: Response, next: NextFunction) => {
   try {
     const { currentPassword, newPassword, confirmPassword } = req.body;
 
@@ -346,7 +346,7 @@ export const changePassword = async (req: ChangePasswordRequest, res: Response, 
 };
 
 // Forgot password
-export const forgotPassword = async (req: ForgotPasswordRequest, res: Response, next: NextFunction) => {
+export const forgotPassword: RequestHandler = async (req: ForgotPasswordRequest, res: Response, next: NextFunction) => {
   try {
     const { email } = req.body;
 
@@ -389,7 +389,7 @@ export const forgotPassword = async (req: ForgotPasswordRequest, res: Response, 
 };
 
 // Reset password
-export const resetPassword = async (req: ResetPasswordRequest, res: Response, next: NextFunction) => {
+export const resetPassword: RequestHandler = async (req: ResetPasswordRequest, res: Response, next: NextFunction) => {
   try {
     const { token, password, confirmPassword } = req.body;
 
@@ -446,7 +446,7 @@ export const resetPassword = async (req: ResetPasswordRequest, res: Response, ne
 };
 
 // Refresh token
-export const refreshToken = async (req: Request, res: Response, next: NextFunction) => {
+export const refreshToken: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { refreshToken } = req.body;
 

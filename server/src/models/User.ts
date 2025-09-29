@@ -183,13 +183,11 @@ userSchema.virtual('fullName').get(function() {
   return this.name;
 });
 
-// Virtual for account lock status
-userSchema.virtual('isLocked').get(function() {
-  return !!(this.lockUntil && this.lockUntil > new Date());
-});
+// Note: Do not add a virtual named "isLocked" because an instance method with the same name exists
 
 // Indexes for performance
-userSchema.index({ email: 1 });
+// Ensure index is declared once
+// userSchema.index({ email: 1 });
 userSchema.index({ role: 1 });
 userSchema.index({ isActive: 1 });
 userSchema.index({ isEmailVerified: 1 });

@@ -317,8 +317,7 @@ orderSchema.virtual('isDigitalOrder').get(function() {
   return this.items.every(item => item.digitalDelivery);
 });
 
-// Indexes for performance
-orderSchema.index({ orderNumber: 1 });
+// Indexes for performance (avoid duplicating indexes if defined elsewhere)
 orderSchema.index({ user: 1 });
 orderSchema.index({ status: 1 });
 orderSchema.index({ 'payment.status': 1 });
