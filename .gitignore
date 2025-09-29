@@ -115,3 +115,9 @@ cloudinary.json
 
 # Stripe
 stripe-cli.log
+
+# Test files (security and clutter prevention)
+test-*.js
+test-*.ts
+*test-*.js
+*test-*.ts

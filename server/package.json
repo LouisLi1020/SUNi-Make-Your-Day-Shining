@@ -10,9 +10,6 @@
     "seed": "ts-node src/scripts/seed.ts",
     "seed:reset": "ts-node src/scripts/seed.ts --reset",
     "test:auth": "ts-node src/scripts/test-auth.ts",
-    "test:api": "ts-node src/scripts/test-api.ts",
-    "test:simple": "ts-node src/scripts/test-simple.ts",
-    "test:basic": "node test-basic.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -22,7 +19,9 @@
     "clean": "rm -rf dist",
     "prebuild": "npm run clean",
     "db:reset": "npm run seed:reset",
-    "health": "curl http://localhost:5000/health"
+    "health": "curl http://localhost:5000/health",
+    "kill-port": "npx kill-port 5000",
+    "restart": "npm run kill-port && npm run dev"
   },
   "keywords": ["e-commerce", "water-activities", "beach", "booking"],
   "author": "LouisLi1020",

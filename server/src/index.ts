@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import connectDB, { checkDatabaseHealth, createIndexes, seedInitialData } from './config/database';
 import { errorHandler } from './middleware/errorHandler';
 import { notFound } from './middleware/notFound';
@@ -54,11 +55,12 @@ app.get('/health', async (req, res) => {
 // Import routes
 import authRoutes from './routes/auth';
 import userRoutes from './routes/users';
+import productRoutes from './routes/products';
 
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-// app.use('/api/products', productRoutes);
+app.use('/api/products', productRoutes);
 // app.use('/api/orders', orderRoutes);
 
 // Error handling middleware
@@ -78,12 +80,27 @@ const startServer = async () => {
     await seedInitialData();
     
     // Start the server
-    app.listen(PORT, () => {
+    const server = app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
       console.log(`🌊 Suni API ready at http://localhost:${PORT}`);
       console.log(`📊 Health check: http://localhost:${PORT}/health`);
       console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);
     });
+
+    // Graceful shutdown
+    const gracefulShutdown = (signal: string) => {
+      console.log(`\n🛑 Received ${signal}. Starting graceful shutdown...`);
+      server.close(() => {
+        console.log('✅ HTTP server closed');
+        mongoose.connection.close().then(() => {
+          console.log('✅ MongoDB connection closed');
+          process.exit(0);
+        });
+      });
+    };
+
+    process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+    process.on('SIGINT', () => gracefulShutdown('SIGINT'));
   } catch (error) {
     console.error('❌ Failed to start server:', error);
     process.exit(1);

@@ -258,3 +258,99 @@ Content-Type: application/json
   "email": "{{testEmail}}",
   "password": "wrongpassword"
 }
+
+### ========================================
+### PRODUCT API TESTS
+### ========================================
+
+### 31. Get All Products (Public)
+GET {{apiUrl}}/products
+
+### 32. Get Products with Pagination
+GET {{apiUrl}}/products?page=1&limit=5
+
+### 33. Get Products by Category
+GET {{apiUrl}}/products?category=surfboards
+
+### 34. Search Products
+GET {{apiUrl}}/products?search=surf
+
+### 35. Get Product Categories
+GET {{apiUrl}}/products/categories
+
+### 36. Get Featured Products
+GET {{apiUrl}}/products/featured
+
+### 37. Get Product by ID
+GET {{apiUrl}}/products/{{$dotenv PRODUCT_ID}}
+
+### 38. Create Product (Admin only)
+POST {{apiUrl}}/products
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "Test Surfboard",
+  "description": "A high-quality surfboard for beginners",
+  "price": 299.99,
+  "category": "surfboards",
+  "brand": "Test Brand",
+  "sku": "TSB001",
+  "stock": 10,
+  "images": ["https://example.com/surfboard1.jpg"],
+  "specifications": {
+    "length": "8'0\"",
+    "width": "22\"",
+    "thickness": "3\"",
+    "volume": "45L"
+  },
+  "features": ["Beginner friendly", "Durable construction"],
+  "isActive": true,
+  "isFeatured": false
+}
+
+### 39. Update Product (Admin only)
+PUT {{apiUrl}}/products/{{$dotenv PRODUCT_ID}}
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "Updated Test Surfboard",
+  "price": 349.99,
+  "stock": 15
+}
+
+### 40. Update Product Inventory (Admin only)
+PATCH {{apiUrl}}/products/{{$dotenv PRODUCT_ID}}/inventory
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+Content-Type: application/json
+
+{
+  "stock": 20,
+  "operation": "add"
+}
+
+### 41. Get Product Stats (Admin only)
+GET {{apiUrl}}/products/stats
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+
+### 42. Delete Product (Admin only)
+DELETE {{apiUrl}}/products/{{$dotenv PRODUCT_ID}}
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+
+### 43. Create Product - Unauthorized
+POST {{apiUrl}}/products
+Content-Type: application/json
+
+{
+  "name": "Unauthorized Product",
+  "price": 100
+}
+
+### 44. Update Product - Unauthorized
+PUT {{apiUrl}}/products/{{$dotenv PRODUCT_ID}}
+Content-Type: application/json
+
+{
+  "name": "Unauthorized Update"
+}
