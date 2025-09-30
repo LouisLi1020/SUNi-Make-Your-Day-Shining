@@ -60,6 +60,7 @@ import profileRoutes from './routes/profile';
 import cartRoutes from './routes/cart';
 import checkoutRoutes from './routes/checkout';
 import paymentRoutes from './routes/payment';
+import orderConfirmationRoutes from './routes/orderConfirmation';
 
 // API routes
 app.use('/api/auth', authRoutes);
@@ -69,6 +70,7 @@ app.use('/api/profile', profileRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/checkout', checkoutRoutes);
 app.use('/api/payment', paymentRoutes);
+app.use('/api/orders', orderConfirmationRoutes);
 // app.use('/api/orders', orderRoutes);
 
 // Error handling middleware

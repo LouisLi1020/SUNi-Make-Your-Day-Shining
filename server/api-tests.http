@@ -708,3 +708,94 @@ GET {{apiUrl}}/payment/status/invalid_payment_id
 
 ### 84. Unauthorized Payment Methods
 GET {{apiUrl}}/payment/methods
+
+### ========================================
+### ORDER CONFIRMATION API TESTS
+### ========================================
+
+### 85. Get Order Confirmation
+GET {{apiUrl}}/orders/confirmation/{{$dotenv ORDER_ID}}
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 86. Send Order Confirmation Email
+POST {{apiUrl}}/orders/confirmation/{{$dotenv ORDER_ID}}/email
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 87. Get Order Tracking
+GET {{apiUrl}}/orders/tracking/{{$dotenv ORDER_ID}}
+
+### 88. Get Order by Order Number (Public)
+GET {{apiUrl}}/orders/track/{{$dotenv ORDER_NUMBER}}
+
+### 89. Get Order by Order Number with Email Verification
+GET {{apiUrl}}/orders/track/{{$dotenv ORDER_NUMBER}}?email=customer@example.com
+
+### 90. Get User Order History
+GET {{apiUrl}}/orders/history?page=1&limit=10
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 91. Cancel Order
+POST {{apiUrl}}/orders/{{$dotenv ORDER_ID}}/cancel
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "reason": "Customer requested cancellation"
+}
+
+### 92. Update Order Status (Admin)
+PUT {{apiUrl}}/orders/{{$dotenv ORDER_ID}}/status
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+Content-Type: application/json
+
+{
+  "status": "shipped",
+  "trackingNumber": "TRK123456789",
+  "notes": "Order shipped via express delivery"
+}
+
+### 93. Update Order Payment Status (Admin)
+PUT {{apiUrl}}/orders/{{$dotenv ORDER_ID}}/status
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+Content-Type: application/json
+
+{
+  "status": "confirmed",
+  "paymentStatus": "paid",
+  "notes": "Payment confirmed"
+}
+
+### 94. Get Order Statistics (Admin)
+GET {{apiUrl}}/orders/statistics
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+
+### 95. Order Confirmation - Invalid Order ID
+GET {{apiUrl}}/orders/confirmation/invalid-order-id
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 96. Order Tracking - Invalid Order ID
+GET {{apiUrl}}/orders/tracking/invalid-order-id
+
+### 97. Cancel Order - Invalid Order ID
+POST {{apiUrl}}/orders/invalid-order-id/cancel
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "reason": "Test cancellation"
+}
+
+### 98. Update Order Status - Invalid Status
+PUT {{apiUrl}}/orders/{{$dotenv ORDER_ID}}/status
+Authorization: Bearer {{$dotenv ADMIN_TOKEN}}
+Content-Type: application/json
+
+{
+  "status": "invalid_status"
+}
+
+### 99. Unauthorized Order History Access
+GET {{apiUrl}}/orders/history
+
+### 100. Unauthorized Order Confirmation Access
+GET {{apiUrl}}/orders/confirmation/{{$dotenv ORDER_ID}}
