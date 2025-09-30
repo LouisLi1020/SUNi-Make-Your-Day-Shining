@@ -11,6 +11,11 @@ declare global {
   }
 }
 
+// Export AuthenticatedRequest type for use in controllers
+export interface AuthenticatedRequest extends Request {
+  user?: IUser;
+}
+
 // Authentication middleware
 export const authenticate = async (req: Request, res: Response, next: NextFunction) => {
   try {

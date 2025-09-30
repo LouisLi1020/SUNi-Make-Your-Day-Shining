@@ -54,37 +54,47 @@ Create a comprehensive beach lifestyle and water activities platform that serves
   - [x] Add user preferences and settings
   - [x] Create admin user management interface
 
-- [ ] **User Profile Pages**
-  - [ ] Create comprehensive user profile interface
-  - [ ] Add profile editing and customization
-  - [ ] Implement profile picture upload
-  - [ ] Add user activity history display
+- [x] **User Profile Pages (Backend)**
+  - [x] Create comprehensive user profile API endpoints
+  - [x] Add profile editing and customization API
+  - [x] Implement profile picture upload API
+  - [x] Add user activity history API
+  - [ ] Create frontend profile interface
+  - [ ] Add frontend profile editing UI
+  - [ ] Implement frontend profile picture upload
+  - [ ] Add frontend user activity history display
 
 #### Week 3: Product Management System
-- [x] **Product CRUD Operations**
+- [x] **Product CRUD Operations (Backend)**
   - [x] Create product creation/editing endpoints
   - [x] Implement product categorization
-  - [ ] Add image upload and management
   - [x] Create inventory tracking system
+  - [ ] Add image upload and management
+  - [ ] Create frontend product management interface
 
-- [x] **Product Display**
-  - [x] Build product listing with filtering
-  - [x] Create product detail pages
-  - [x] Implement search functionality
+- [x] **Product Display (Backend)**
+  - [x] Build product listing with filtering API
+  - [x] Create product detail API endpoints
+  - [x] Implement search functionality API
   - [ ] Add product recommendations
+  - [ ] Create frontend product listing UI
+  - [ ] Create frontend product detail pages
 
 #### Week 4: Shopping Cart & Basic Checkout
-- [ ] **Shopping Cart**
-  - [ ] Implement cart management (add/remove/update)
-  - [ ] Create cart persistence (localStorage + database)
-  - [ ] Add cart validation and error handling
-  - [ ] Implement cart sharing between devices
+- [x] **Shopping Cart (Backend)**
+  - [x] Implement cart management (add/remove/update)
+  - [x] Create cart persistence (localStorage + database)
+  - [x] Add cart validation and error handling
+  - [x] Implement cart sharing between devices
+  - [ ] Create frontend cart interface
 
-- [ ] **Basic Checkout**
-  - [ ] Create checkout flow UI
-  - [ ] Implement order creation
+- [x] **Basic Checkout (Backend)**
+  - [x] Implement order creation logic
+  - [x] Create checkout session management
+  - [x] Add shipping and discount calculation
   - [ ] Add basic payment integration (Stripe)
   - [ ] Create order confirmation system
+  - [ ] Create frontend checkout flow UI
 
 **Milestone 1**: Basic e-commerce functionality with user authentication and payment processing
 

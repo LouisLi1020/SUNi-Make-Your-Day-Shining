@@ -56,11 +56,17 @@ app.get('/health', async (req, res) => {
 import authRoutes from './routes/auth';
 import userRoutes from './routes/users';
 import productRoutes from './routes/products';
+import profileRoutes from './routes/profile';
+import cartRoutes from './routes/cart';
+import checkoutRoutes from './routes/checkout';
 
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/profile', profileRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/checkout', checkoutRoutes);
 // app.use('/api/orders', orderRoutes);
 
 // Error handling middleware

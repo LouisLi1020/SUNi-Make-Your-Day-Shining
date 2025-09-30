@@ -354,3 +354,263 @@ Content-Type: application/json
 {
   "name": "Unauthorized Update"
 }
+
+### ========================================
+### PROFILE API TESTS
+### ========================================
+
+### 45. Get User Profile (需要認證)
+GET {{apiUrl}}/profile
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 46. Update User Profile (需要認證)
+PUT {{apiUrl}}/profile
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "Updated User Name",
+  "profile": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "phone": "+1234567890",
+    "gender": "male",
+    "dateOfBirth": "1990-01-01",
+    "bio": "I love water activities and beach lifestyle!",
+    "location": "San Diego, CA",
+    "website": "https://johndoe.com"
+  }
+}
+
+### 47. Get User Activity History (需要認證)
+GET {{apiUrl}}/profile/activity?page=1&limit=10
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 48. Get User Statistics (需要認證)
+GET {{apiUrl}}/profile/stats
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 49. Get User Preferences (需要認證)
+GET {{apiUrl}}/profile/preferences
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 50. Update User Preferences (需要認證)
+PUT {{apiUrl}}/profile/preferences
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "preferences": {
+    "language": "en",
+    "currency": "USD",
+    "timezone": "America/Los_Angeles",
+    "notifications": {
+      "email": true,
+      "sms": false,
+      "push": true
+    },
+    "marketing": false,
+    "privacy": {
+      "profileVisibility": "public",
+      "showEmail": false,
+      "showPhone": false
+    }
+  }
+}
+
+### 51. Upload Profile Picture (需要認證)
+POST {{apiUrl}}/profile/avatar
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "imageUrl": "https://res.cloudinary.com/example/image/upload/v1234567890/avatar.jpg"
+}
+
+### 52. Delete User Account (需要認證)
+DELETE {{apiUrl}}/profile
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "password": "{{testPassword}}",
+  "confirmation": "DELETE"
+}
+
+### 53. Profile Validation Test - Invalid Data
+PUT {{apiUrl}}/profile
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "A",
+  "profile": {
+    "firstName": "",
+    "phone": "invalid-phone",
+    "gender": "invalid-gender",
+    "dateOfBirth": "invalid-date",
+    "bio": "This is a very long bio that exceeds the maximum character limit of 500 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
+  }
+}
+
+### 54. Profile Picture Validation Test - Invalid URL
+POST {{apiUrl}}/profile/avatar
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "imageUrl": "not-a-valid-url"
+}
+
+### 55. Unauthorized Profile Access
+GET {{apiUrl}}/profile
+
+### ========================================
+### CART API TESTS
+### ========================================
+
+### 56. Get Cart (Guest User)
+GET {{apiUrl}}/cart
+X-Session-ID: guest-session-123
+
+### 57. Get Cart (Authenticated User)
+GET {{apiUrl}}/cart
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 58. Add Item to Cart (Guest)
+POST {{apiUrl}}/cart/items
+X-Session-ID: guest-session-123
+Content-Type: application/json
+
+{
+  "productId": "{{$dotenv PRODUCT_ID}}",
+  "quantity": 2,
+  "variant": {
+    "size": "Large",
+    "color": "Blue"
+  }
+}
+
+### 59. Add Item to Cart (Authenticated)
+POST {{apiUrl}}/cart/items
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "productId": "{{$dotenv PRODUCT_ID}}",
+  "quantity": 1
+}
+
+### 60. Update Cart Item Quantity
+PUT {{apiUrl}}/cart/items
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "productId": "{{$dotenv PRODUCT_ID}}",
+  "quantity": 3
+}
+
+### 61. Remove Item from Cart
+DELETE {{apiUrl}}/cart/items
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "productId": "{{$dotenv PRODUCT_ID}}"
+}
+
+### 62. Get Cart Summary
+GET {{apiUrl}}/cart/summary
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 63. Validate Cart
+POST {{apiUrl}}/cart/validate
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 64. Merge Guest Cart with User Cart
+POST {{apiUrl}}/cart/merge
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+X-Session-ID: guest-session-123
+
+### 65. Clear Cart
+DELETE {{apiUrl}}/cart/clear
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### ========================================
+### CHECKOUT API TESTS
+### ========================================
+
+### 66. Initialize Checkout
+POST {{apiUrl}}/checkout/initialize
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 67. Get Checkout Session
+GET {{apiUrl}}/checkout/session
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 68. Update Shipping Method
+PUT {{apiUrl}}/checkout/shipping
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "shippingMethod": "express"
+}
+
+### 69. Apply Discount Code
+POST {{apiUrl}}/checkout/discount
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "discountCode": "WELCOME10"
+}
+
+### 70. Process Checkout
+POST {{apiUrl}}/checkout/process
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "shippingAddress": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "company": "Acme Corp",
+    "address1": "123 Main St",
+    "address2": "Apt 4B",
+    "city": "San Diego",
+    "state": "CA",
+    "zipCode": "92101",
+    "country": "US",
+    "phone": "+1234567890"
+  },
+  "billingAddress": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "company": "Acme Corp",
+    "address1": "123 Main St",
+    "address2": "Apt 4B",
+    "city": "San Diego",
+    "state": "CA",
+    "zipCode": "92101",
+    "country": "US",
+    "phone": "+1234567890"
+  },
+  "paymentMethod": "credit-card",
+  "shippingMethod": "standard",
+  "notes": "Please deliver after 5 PM"
+}
+
+### 71. Cart Validation Test - Empty Cart
+POST {{apiUrl}}/checkout/initialize
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 72. Invalid Discount Code
+POST {{apiUrl}}/checkout/discount
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "discountCode": "INVALID_CODE"
+}
