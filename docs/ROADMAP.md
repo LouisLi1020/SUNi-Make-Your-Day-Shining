@@ -1,7 +1,7 @@
 # Suni Development Roadmap
 
 ## 🎯 Project Vision
-Create a comprehensive beach lifestyle and water activities platform that serves as both an e-commerce store and booking system, with a focus on MVP delivery and iterative improvement.
+A personal side project to build a complete e-commerce platform demonstrating modern web development skills. Focus on core e-commerce functionality: product management, shopping cart, checkout flow (guest & member), and admin management system.
 
 ## 🏗️ Architecture & Performance Strategy
 
@@ -100,188 +100,120 @@ Create a comprehensive beach lifestyle and water activities platform that serves
 
 ---
 
-### Phase 2: Water Activities & Booking System (Weeks 5-8)
-**Goal**: Add water activity booking functionality with schedule management
+### Phase 2: Frontend Development & MVP Completion (Weeks 5-8)
+**Goal**: Build React frontend to complete the MVP with full e-commerce functionality
 
-#### Week 5: Activity Management System
-- [ ] **Activity Schema Design**
-  - [ ] Design Activity schema (types, descriptions, requirements)
-  - [ ] Design Schedule schema (dates, times, capacity)
-  - [ ] Design Guide schema (instructors, certifications)
-  - [ ] Create activity-guide relationships
+#### Week 5: Frontend Foundation
+- [ ] **React Application Setup**
+  - [ ] Set up React with TypeScript and Vite
+  - [ ] Configure routing with React Router
+  - [ ] Set up state management (Zustand or Context)
+  - [ ] Implement responsive design system
 
-- [ ] **Activity CRUD Operations**
-  - [ ] Create activity management endpoints
-  - [ ] Implement schedule management
-  - [ ] Add guide assignment system
-  - [ ] Create activity availability checking
+- [ ] **Core UI Components**
+  - [ ] Create reusable component library
+  - [ ] Implement authentication UI (login/register)
+  - [ ] Build navigation and layout components
+  - [ ] Add loading states and error handling
 
-#### Week 6: Booking System
-- [ ] **Booking Logic**
-  - [ ] Implement booking creation and validation
-  - [ ] Add capacity management
-  - [ ] Create booking conflict resolution
-  - [ ] Implement booking modification/cancellation
+#### Week 6: Product Display & Shopping
+- [ ] **Product Catalog**
+  - [ ] Create product listing page with basic filters
+  - [ ] Build product detail pages
+  - [ ] Implement search functionality
+  - [ ] Add product image display
 
-- [ ] **Booking Interface**
-  - [ ] Create activity browsing interface
-  - [ ] Build date/time selection system
-  - [ ] Add participant information collection
-  - [ ] Implement booking confirmation flow
+- [ ] **Shopping Cart Interface**
+  - [ ] Build cart sidebar/dropdown
+  - [ ] Create cart management UI
+  - [ ] Implement cart persistence
+  - [ ] Add cart validation
 
-#### Week 7: Mixed Cart System
-- [ ] **Unified Cart**
-  - [ ] Integrate products and activities in single cart
-  - [ ] Handle different pricing models (one-time vs. per-person)
-  - [ ] Implement cart validation for mixed items
-  - [ ] Add cart optimization suggestions
+#### Week 7: Checkout & User Experience
+- [ ] **Checkout Flow**
+  - [ ] Create checkout process (guest & member)
+  - [ ] Implement address management
+  - [ ] Add payment integration (Stripe Elements)
+  - [ ] Build order confirmation pages
 
-- [ ] **Enhanced Checkout**
-  - [ ] Update checkout for mixed cart items
-  - [ ] Add activity-specific information collection
-  - [ ] Implement different payment flows
-  - [ ] Create comprehensive order confirmation
+- [ ] **User Dashboard**
+  - [ ] Create user profile management
+  - [ ] Build order history interface
+  - [ ] Implement order tracking
+  - [ ] Add basic account settings
 
-#### Week 8: Booking Management
-- [ ] **Customer Booking Management**
-  - [ ] Create customer booking dashboard
-  - [ ] Add booking history and status tracking
-  - [ ] Implement booking modification interface
-  - [ ] Add booking reminder system
+#### Week 8: Admin Panel
+- [ ] **Admin Dashboard**
+  - [ ] Create admin authentication
+  - [ ] Build product management interface
+  - [ ] Implement order management system
+  - [ ] Add basic user management
 
-- [ ] **Admin Booking Management**
-  - [ ] Create admin booking overview
-  - [ ] Add booking status management
-  - [ ] Implement guide assignment interface
-  - [ ] Create booking analytics dashboard
+- [ ] **Content Management**
+  - [ ] Create category management
+  - [ ] Implement inventory tracking UI
+  - [ ] Add basic order analytics
 
-**Milestone 2**: Complete booking system with mixed cart functionality
-
----
-
-### Phase 3: Enhanced Features & Localization (Weeks 9-12)
-**Goal**: Add multi-language support, advanced payments, and improved UX
-
-#### Week 9: Multi-language Support
-- [ ] **Internationalization Setup**
-  - [ ] Implement i18n framework (react-i18next)
-  - [ ] Create language switching functionality
-  - [ ] Set up translation management system
-  - [ ] Add RTL support for future languages
-
-- [ ] **Content Translation**
-  - [ ] Translate core UI components
-  - [ ] Create product/activity translation system
-  - [ ] Implement dynamic content translation
-  - [ ] Add language-specific SEO optimization
-
-#### Week 10: Advanced Payment & Notifications
-- [ ] **Payment Enhancements**
-  - [ ] Add PayPal integration
-  - [ ] Implement saved payment methods
-  - [ ] Add payment plan options for activities
-  - [ ] Create payment failure handling
-
-- [ ] **Notification System**
-  - [ ] Set up email notification service (SendGrid)
-  - [ ] Create booking confirmation emails
-  - [ ] Add order status update notifications
-  - [ ] Implement SMS notifications (optional)
-
-#### Week 11: Customer Service System
-- [ ] **Support Infrastructure**
-  - [ ] Create customer service ticket system
-  - [ ] Implement FAQ management
-  - [ ] Add contact form with categorization
-  - [ ] Create support agent dashboard
-
-- [ ] **Feedback System**
-  - [ ] Implement product/activity reviews
-  - [ ] Add rating system
-  - [ ] Create feedback moderation system
-  - [ ] Build review display components
-
-#### Week 12: Mobile Optimization & Performance
-- [ ] **Mobile Responsiveness**
-  - [ ] Optimize all pages for mobile devices
-  - [ ] Implement touch-friendly interactions
-  - [ ] Add mobile-specific features (camera for reviews)
-  - [ ] Test across different screen sizes
-
-- [ ] **Performance Optimization & Caching**
-  - [ ] Implement code splitting and lazy loading
-  - [ ] Optimize image loading and compression
-  - [ ] **Add Redis/Memcached for hot data caching**
-  - [ ] **Implement product listing and category caching**
-  - [ ] **Add API response caching strategies**
-  - [ ] Implement performance monitoring
-
-**Milestone 3**: Production-ready platform with full feature set
+**Milestone 2**: Complete MVP with full e-commerce functionality
 
 ---
 
-### Phase 4: Advanced Features & Scaling (Weeks 13-16)
-**Goal**: Add advanced features and prepare for scale
+### Phase 3: Optional Features & Enhancements (Weeks 9-12)
+**Goal**: Add optional features to enhance the platform (if time permits)
 
-#### Week 13: Analytics & Reporting
-- [ ] **Analytics Integration**
-  - [ ] Set up Google Analytics
-  - [ ] Implement custom event tracking
-  - [ ] Create user behavior analytics
-  - [ ] Add conversion funnel analysis
+#### Week 9: Product Enhancement (Optional)
+- [ ] **Product Features**
+  - [ ] Implement product reviews and ratings
+  - [ ] Add wishlist functionality
+  - [ ] Create basic product recommendations
+  - [ ] Add product image upload
 
-- [ ] **Business Intelligence**
-  - [ ] Create sales reporting dashboard
-  - [ ] Implement inventory analytics
-  - [ ] Add customer segmentation
-  - [ ] Create predictive analytics for demand
+#### Week 10: Marketing Features (Optional)
+- [ ] **Promotional Features**
+  - [ ] Implement discount codes
+  - [ ] Add basic email notifications
+  - [ ] Create simple promotional banners
 
-#### Week 14: Advanced User Features
-- [ ] **Personalization**
-  - [ ] Implement recommendation engine
-  - [ ] Add personalized product suggestions
-  - [ ] Create user preference learning
-  - [ ] Add wishlist and favorites
+#### Week 11: Performance & Polish (Optional)
+- [ ] **Optimization**
+  - [ ] Implement code splitting
+  - [ ] Optimize image loading
+  - [ ] Add basic caching
+  - [ ] Improve mobile experience
 
-- [ ] **Social Features**
-  - [ ] Add social login options
-  - [ ] Implement social sharing
-  - [ ] Create user-generated content
-  - [ ] Add referral system
+#### Week 12: Documentation & Deployment (Optional)
+- [ ] **Final Polish**
+  - [ ] Create project documentation
+  - [ ] Set up basic deployment
+  - [ ] Add basic monitoring
+  - [ ] Create demo data
 
-#### Week 15: API & Integration
-- [ ] **Public API**
-  - [ ] Create RESTful API documentation
-  - [ ] Implement API rate limiting
-  - [ ] Add API authentication
-  - [ ] Create SDK for third-party integrations
+**Milestone 3**: Polished side project ready for portfolio
 
-- [ ] **Third-party Integrations**
-  - [ ] Integrate with booking platforms
-  - [ ] Add social media integrations
-  - [ ] Implement marketing automation
-  - [ ] Add CRM integration
+---
 
-#### Week 16: Security & Compliance
-- [ ] **Security Hardening**
-  - [ ] Implement comprehensive security audit
-  - [ ] Add rate limiting and DDoS protection
-  - [ ] Implement data encryption
-  - [ ] Add security monitoring
+### Phase 4: Future Considerations (Optional)
+**Goal**: Consider additional features if the project evolves beyond a side project
 
-- [ ] **Compliance & Legal**
-  - [ ] Ensure GDPR compliance
-  - [ ] Implement data privacy controls
-  - [ ] Add terms of service and privacy policy
-  - [ ] Create data export/deletion features
+#### Potential Future Features
+- [ ] **Activity Booking System** (Separate project consideration)
+  - [ ] Calendar-based booking system
+  - [ ] Guide/instructor management
+  - [ ] Activity scheduling and availability
+  - [ ] Mixed cart (products + activities)
 
-- [ ] **CDN & Global Deployment**
-  - [ ] **Implement CDN for static assets (Cloudflare/AWS CloudFront)**
-  - [ ] **Set up global content delivery optimization**
-  - [ ] **Configure image optimization and compression**
-  - [ ] **Implement edge caching strategies**
+- [ ] **Advanced Analytics** (If needed for portfolio)
+  - [ ] Basic Google Analytics integration
+  - [ ] Simple sales dashboard
+  - [ ] User behavior tracking
 
-**Milestone 4**: Enterprise-ready platform with advanced features
+- [ ] **Enterprise Features** (Only if project scales)
+  - [ ] Multi-language support
+  - [ ] Advanced security features
+  - [ ] API documentation
+  - [ ] Third-party integrations
+
+**Note**: These features are optional and should only be considered if the project evolves beyond its current scope as a side project.
 
 ---
 
