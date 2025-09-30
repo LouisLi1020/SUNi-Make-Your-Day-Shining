@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { AdminDashboard } from './components/AdminDashboard';
-import { CheckoutPage } from './components/CheckoutPage';
-import { OrderPage } from './components/OrderPage';
-import { ProfilePage } from './components/ProfilePage';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
@@ -12,6 +8,10 @@ import Home from './pages/Home';
 import Products from './pages/Products';
 import CategoriesPage from './pages/Categories';
 import CategoryPage from './pages/CategoryPage';
+import Admin from './pages/Admin';
+import Checkout from './pages/Checkout';
+import Orders from './pages/Orders';
+import Profile from './pages/Profile';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -75,27 +75,27 @@ export default function App() {
 
       // Admin
       case 'admin':
-        return <AdminDashboard onNavigate={handleNavigate} />;
+        return <Admin onNavigate={handleNavigate} />;
 
       // Checkout & Orders
       case 'checkout':
-        return <CheckoutPage onNavigate={handleNavigate} isLoggedIn={isLoggedIn} userEmail={userEmail} />;
+        return <Checkout onNavigate={handleNavigate} isLoggedIn={isLoggedIn} userEmail={userEmail} />;
       
       case 'order-confirmation':
-        return <OrderPage onNavigate={handleNavigate} isLoggedIn={isLoggedIn} orderType="confirmation" />;
+        return <Orders onNavigate={handleNavigate} isLoggedIn={isLoggedIn} orderType="confirmation" />;
       
       case 'order-history':
-        return <OrderPage onNavigate={handleNavigate} isLoggedIn={isLoggedIn} orderType="history" />;
+        return <Orders onNavigate={handleNavigate} isLoggedIn={isLoggedIn} orderType="history" />;
       
       case 'order-tracking':
-        return <OrderPage onNavigate={handleNavigate} isLoggedIn={isLoggedIn} orderType="tracking" />;
+        return <Orders onNavigate={handleNavigate} isLoggedIn={isLoggedIn} orderType="tracking" />;
 
       // Profile & Account
       case 'profile':
-        return <ProfilePage onNavigate={handleNavigate} isLoggedIn={isLoggedIn} profileType="account" />;
+        return <Profile onNavigate={handleNavigate} isLoggedIn={isLoggedIn} profileType="account" />;
       
       case 'guest-lookup':
-        return <ProfilePage onNavigate={handleNavigate} isLoggedIn={false} profileType="guest-lookup" />;
+        return <Profile onNavigate={handleNavigate} isLoggedIn={false} profileType="guest-lookup" />;
 
       // Login/Demo
       case 'login':

@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { ArrowLeft, CreditCard, Truck, Shield, Check } from 'lucide-react';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Separator } from './ui/separator';
-import { RadioGroup, RadioGroupItem } from './ui/radio-group';
-import { Checkbox } from './ui/checkbox';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { CartItem } from '../data/users';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Separator } from '../components/ui/separator';
+import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
+import { Checkbox } from '../components/ui/checkbox';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { type CartItem } from '../data/users';
 
 interface CheckoutPageProps {
   onNavigate: (page: string) => void;
@@ -40,7 +40,7 @@ const mockCart: CartItem[] = [
   }
 ];
 
-export function CheckoutPage({ onNavigate, isLoggedIn, userEmail }: CheckoutPageProps) {
+export default function Checkout({ onNavigate, isLoggedIn, userEmail }: CheckoutPageProps) {
   const [currentStep, setCurrentStep] = useState<'info' | 'shipping' | 'payment' | 'review'>('info');
   const [checkoutAs, setCheckoutAs] = useState<'guest' | 'member'>(isLoggedIn ? 'member' : 'guest');
   const [paymentMethod, setPaymentMethod] = useState('card');
@@ -113,7 +113,7 @@ export function CheckoutPage({ onNavigate, isLoggedIn, userEmail }: CheckoutPage
             <CardDescription>Choose how you'd like to complete your order</CardDescription>
           </CardHeader>
           <CardContent>
-            <Tabs value={checkoutAs} onValueChange={(value) => setCheckoutAs(value as 'guest' | 'member')}>
+            <Tabs value={checkoutAs} onValueChange={(value: string) => setCheckoutAs(value as 'guest' | 'member')}>
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="guest">Guest Checkout</TabsTrigger>
                 <TabsTrigger value="member">Create Account</TabsTrigger>
@@ -185,7 +185,7 @@ export function CheckoutPage({ onNavigate, isLoggedIn, userEmail }: CheckoutPage
                 <Checkbox
                   id="createAccount"
                   checked={formData.createAccount}
-                  onCheckedChange={(checked) => handleInputChange('createAccount', !!checked)}
+                  onCheckedChange={(checked: boolean) => handleInputChange('createAccount', !!checked)}
                 />
                 <Label htmlFor="createAccount" className="text-sm">
                   Create an account for faster checkout next time
@@ -195,7 +195,7 @@ export function CheckoutPage({ onNavigate, isLoggedIn, userEmail }: CheckoutPage
                 <Checkbox
                   id="newsletter"
                   checked={formData.subscribeNewsletter}
-                  onCheckedChange={(checked) => handleInputChange('subscribeNewsletter', !!checked)}
+                  onCheckedChange={(checked: boolean) => handleInputChange('subscribeNewsletter', !!checked)}
                 />
                 <Label htmlFor="newsletter" className="text-sm">
                   Subscribe to our newsletter for exclusive offers
@@ -254,7 +254,7 @@ export function CheckoutPage({ onNavigate, isLoggedIn, userEmail }: CheckoutPage
             </div>
             <div>
               <Label htmlFor="state">State</Label>
-              <Select value={formData.state} onValueChange={(value) => handleInputChange('state', value)}>
+              <Select value={formData.state} onValueChange={(value: string) => handleInputChange('state', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select state" />
                 </SelectTrigger>
@@ -390,7 +390,7 @@ export function CheckoutPage({ onNavigate, isLoggedIn, userEmail }: CheckoutPage
             <Checkbox
               id="sameAsBilling"
               checked={formData.sameAsBilling}
-              onCheckedChange={(checked) => handleInputChange('sameAsBilling', !!checked)}
+              onCheckedChange={(checked: boolean) => handleInputChange('sameAsBilling', !!checked)}
             />
             <Label htmlFor="sameAsBilling">Same as shipping address</Label>
           </div>
