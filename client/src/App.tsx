@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { CategoryPage } from './components/CategoryPage';
 import { AdminDashboard } from './components/AdminDashboard';
 import { CheckoutPage } from './components/CheckoutPage';
 import { OrderPage } from './components/OrderPage';
@@ -12,6 +11,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import CategoriesPage from './pages/Categories';
+import CategoryPage from './pages/CategoryPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
