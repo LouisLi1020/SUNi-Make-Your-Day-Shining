@@ -92,7 +92,7 @@ Create a comprehensive beach lifestyle and water activities platform that serves
   - [x] Implement order creation logic
   - [x] Create checkout session management
   - [x] Add shipping and discount calculation
-  - [ ] Add basic payment integration (Stripe)
+  - [x] Add basic payment integration (Stripe)
   - [ ] Create order confirmation system
   - [ ] Create frontend checkout flow UI
 

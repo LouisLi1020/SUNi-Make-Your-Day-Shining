@@ -614,3 +614,97 @@ Content-Type: application/json
 {
   "discountCode": "INVALID_CODE"
 }
+
+### ========================================
+### PAYMENT API TESTS
+### ========================================
+
+### 73. Create Payment Intent
+POST {{apiUrl}}/payment/create-intent
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "amount": 1500,
+  "currency": "TWD",
+  "orderId": "{{$dotenv ORDER_ID}}",
+  "description": "Suni Platform Purchase"
+}
+
+### 74. Get Payment Status
+GET {{apiUrl}}/payment/status/{{$dotenv PAYMENT_INTENT_ID}}
+
+### 75. Confirm Payment
+POST {{apiUrl}}/payment/confirm/{{$dotenv PAYMENT_INTENT_ID}}
+
+### 76. Cancel Payment
+POST {{apiUrl}}/payment/cancel/{{$dotenv PAYMENT_INTENT_ID}}
+
+### 77. Create Refund
+POST {{apiUrl}}/payment/refund/{{$dotenv PAYMENT_INTENT_ID}}
+Content-Type: application/json
+
+{
+  "amount": 500,
+  "reason": "requested_by_customer"
+}
+
+### 78. Get Payment Methods
+GET {{apiUrl}}/payment/methods
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+
+### 79. Create Stripe Customer
+POST {{apiUrl}}/payment/customer
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "email": "customer@example.com",
+  "name": "John Doe"
+}
+
+### 80. Stripe Webhook (Test)
+POST {{apiUrl}}/payment/webhook
+Content-Type: application/json
+Stripe-Signature: t=1234567890,v1=test_signature
+
+{
+  "id": "evt_test_webhook",
+  "object": "event",
+  "type": "payment_intent.succeeded",
+  "data": {
+    "object": {
+      "id": "pi_test_payment_intent",
+      "object": "payment_intent",
+      "status": "succeeded",
+      "metadata": {
+        "orderId": "{{$dotenv ORDER_ID}}"
+      }
+    }
+  }
+}
+
+### 81. Payment Intent - Invalid Amount
+POST {{apiUrl}}/payment/create-intent
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "amount": -100,
+  "currency": "TWD"
+}
+
+### 82. Payment Intent - Missing Amount
+POST {{apiUrl}}/payment/create-intent
+Authorization: Bearer {{$dotenv AUTH_TOKEN}}
+Content-Type: application/json
+
+{
+  "currency": "TWD"
+}
+
+### 83. Payment Status - Invalid ID
+GET {{apiUrl}}/payment/status/invalid_payment_id
+
+### 84. Unauthorized Payment Methods
+GET {{apiUrl}}/payment/methods
