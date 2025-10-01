@@ -121,3 +121,9 @@ test-*.js
 test-*.ts
 *test-*.js
 *test-*.ts
+
+# Reference files (local only)
+ref/
+
+# Archived documentation (local only)
+docs/archive/
