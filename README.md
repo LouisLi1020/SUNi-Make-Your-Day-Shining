@@ -1,36 +1,43 @@
-# 🌊 Suni - Beach Lifestyle & Water Activities Platform
+# 🌟 Suni - Make Your Day Shining
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
 [![React](https://img.shields.io/badge/React-18.0+-blue.svg)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 
-A modern full-stack e-commerce platform combining beach lifestyle product sales with water activity booking services. Built with the MERN stack and designed for scalability and user experience.
+A modern full-stack e-commerce platform for lifestyle products that bring joy to everyday life. Built with the MERN stack, featuring a beautiful Figma-designed interface and comprehensive shopping experience.
 
-## ✨ Features
+## ✨ Current Features
 
-### 🛍️ E-commerce
-- **Product Catalog**: Beach accessories, sunglasses, sunscreen, beachwear
-- **Shopping Cart**: Seamless product browsing and purchasing
-- **Order Management**: Complete order tracking and history
-- **Inventory System**: Real-time stock management with low-stock alerts
+### 🛍️ E-commerce Core
+- **Product Catalog**: Home & Living, Kitchen Essentials, Work & Productivity, Wellness & Self-Care, Garden & Outdoor
+- **Advanced Filtering**: Category, brand, price range, and search functionality
+- **Product Details**: Comprehensive product information with image galleries
+- **Shopping Cart**: Full cart management with real-time updates (UI ready, API pending)
 
-### 🏄‍♀️ Water Activities
-- **Activity Booking**: Diving, snorkeling, SUP, and more
-- **Schedule Management**: Date/time selection with capacity limits
-- **Guide Assignment**: Instructor management and availability
-- **Mixed Cart**: Products and activities in unified shopping experience
+### 📦 Order Management
+- **Guest Checkout**: Purchase without account creation
+- **Member Checkout**: Faster checkout with saved addresses and payment methods
+- **Order Tracking**: Real-time order status and tracking (UI ready, API pending)
+- **Order History**: Complete purchase history for members (UI ready, API pending)
 
-### 👥 User Management
-- **Multi-role Support**: Guest, member, staff, admin roles
-- **Authentication**: JWT-based secure authentication
-- **Profile Management**: Personal information and preferences
-- **Order History**: Complete purchase and booking history
+### 👥 User System
+- **Multi-role Support**: Guest, Member, and Admin roles
+- **Authentication**: JWT-based secure authentication (backend complete, frontend integration pending)
+- **User Profiles**: Complete profile management with addresses and payment methods (UI ready)
+- **Guest Order Lookup**: Track orders without account
 
-### 🌍 Internationalization
-- **Multi-language**: Traditional Chinese, English (with expansion support)
-- **Localized Experience**: Currency, date formats, cultural adaptation
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
+### 🎨 Beautiful UI/UX
+- **Figma-Designed Interface**: Professional, modern design system
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- **Smooth Animations**: Delightful user interactions and transitions
+- **Intuitive Navigation**: Easy-to-use interface with clear information architecture
+
+### 🔧 Admin Dashboard
+- **Product Management**: Add, edit, and manage product inventory
+- **Order Processing**: View and manage customer orders
+- **Analytics Overview**: Basic statistics and insights
+- **Customer Management**: View customer information and orders
 
 ## 🛠️ Technology Stack
 
@@ -134,32 +141,44 @@ suni/
 └── docker-compose.yml     # Development environment
 ```
 
-## 🎯 Development Roadmap
+## 🎯 Development Status
 
-### Phase 1: Core E-commerce (Weeks 1-4)
-- [x] Project setup and architecture
-- [ ] User authentication system
-- [ ] Product catalog and management
-- [ ] Shopping cart functionality
-- [ ] Basic checkout process
+### ✅ Completed
+- [x] **Backend Core** (Weeks 1-4)
+  - User authentication system with JWT
+  - Product management system with CRUD operations
+  - Shopping cart functionality (backend API)
+  - Order management and processing
+  - Payment integration with Stripe
+  - Admin dashboard backend
 
-### Phase 2: Water Activities (Weeks 5-8)
-- [ ] Activity booking system
-- [ ] Schedule management
-- [ ] Guide assignment
-- [ ] Mixed cart implementation
+- [x] **Frontend UI** (Phase 1.5)
+  - Complete Figma design integration
+  - All page components (Home, Products, Profile, Admin, Checkout, Orders)
+  - Responsive design system with Tailwind CSS
+  - Component library with shadcn/ui
+  - Pages architecture migration
 
-### Phase 3: Enhanced Features (Weeks 9-12)
-- [ ] Multi-language support
-- [ ] Advanced payment options
-- [ ] Email notifications
-- [ ] Customer service system
+### 🚧 In Progress
+- [ ] **API Integration** (Current Phase)
+  - Connect frontend to backend APIs
+  - Implement state management with Zustand
+  - Add loading states and error handling
+  - Replace mock data with real API calls
 
-### Phase 4: Advanced Features (Weeks 13-16)
-- [ ] Analytics and reporting
-- [ ] Advanced user features
-- [ ] API and integrations
-- [ ] Security and compliance
+### 📋 Planned
+- [ ] **MVP Completion**
+  - Complete frontend-backend integration
+  - End-to-end testing
+  - Performance optimization
+  - Deployment and hosting
+
+- [ ] **Future Enhancements** (Post-MVP)
+  - Water activity booking system
+  - Multi-language support
+  - Advanced features and optimizations
+
+For detailed roadmap, see [docs/ROADMAP.md](docs/ROADMAP.md)
 
 ## 🧪 Testing
 
@@ -205,10 +224,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Built with ❤️ for beach lovers and water enthusiasts
-- Inspired by the beauty of ocean and beach lifestyle
+- Built with ❤️ to make everyday life shine brighter
+- Figma designs for beautiful, modern UI
+- shadcn/ui for excellent component library
 - Special thanks to the open-source community
 
 ---
 
-**Made with 🌊 for the beach community**
+**Made with ✨ to bring joy to your everyday moments**

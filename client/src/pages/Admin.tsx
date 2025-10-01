@@ -14,26 +14,26 @@ import {
   AlertTriangle,
   CheckCircle
 } from 'lucide-react';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
-import { Label } from './ui/label';
-import { Textarea } from './ui/textarea';
-import { Switch } from './ui/switch';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { products, Product } from '../data/products';
-import { mockOrders, Order } from '../data/users';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../components/ui/dialog';
+import { Label } from '../components/ui/label';
+import { Textarea } from '../components/ui/textarea';
+import { Switch } from '../components/ui/switch';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { products, type Product } from '../data/products';
+import { mockOrders, type Order } from '../data/users';
 
 interface AdminDashboardProps {
   onNavigate: (page: string) => void;
 }
 
-export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
+export default function Admin({ onNavigate }: AdminDashboardProps) {
   const [selectedTab, setSelectedTab] = useState('overview');
   const [productSearchQuery, setProductSearchQuery] = useState('');
   const [orderSearchQuery, setOrderSearchQuery] = useState('');

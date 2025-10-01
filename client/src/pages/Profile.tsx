@@ -13,19 +13,19 @@ import {
   Trash2,
   ArrowLeft
 } from 'lucide-react';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { Separator } from './ui/separator';
-import { Switch } from './ui/switch';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
-import { Badge } from './ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { mockUser, mockOrders, Address, PaymentMethod } from '../data/users';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Separator } from '../components/ui/separator';
+import { Switch } from '../components/ui/switch';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../components/ui/dialog';
+import { Badge } from '../components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { mockUser, mockOrders, type Address, type PaymentMethod } from '../data/users';
 
 interface ProfilePageProps {
   onNavigate: (page: string) => void;
@@ -33,7 +33,7 @@ interface ProfilePageProps {
   profileType: 'account' | 'guest-lookup';
 }
 
-export function ProfilePage({ onNavigate, isLoggedIn, profileType }: ProfilePageProps) {
+export default function Profile({ onNavigate, isLoggedIn, profileType }: ProfilePageProps) {
   const [selectedTab, setSelectedTab] = useState('profile');
   const [editingAddress, setEditingAddress] = useState<Address | null>(null);
   const [editingPayment, setEditingPayment] = useState<PaymentMethod | null>(null);

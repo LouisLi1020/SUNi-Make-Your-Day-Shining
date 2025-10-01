@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
-import { HeroSection } from './components/HeroSection';
-import { FeaturedProducts } from './components/FeaturedProducts';
-import { Categories } from './components/Categories';
-import { ValueProposition } from './components/ValueProposition';
 import { Footer } from './components/Footer';
-import { Layout } from './components/Layout';
-import { ProductCatalog } from './components/ProductCatalog';
-import { CategoryPage } from './components/CategoryPage';
-import { AdminDashboard } from './components/AdminDashboard';
-import { CheckoutPage } from './components/CheckoutPage';
-import { OrderPage } from './components/OrderPage';
-import { ProfilePage } from './components/ProfilePage';
 import About from './pages/About';
+import Contact from './pages/Contact';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import Products from './pages/Products';
+import CategoriesPage from './pages/Categories';
+import CategoryPage from './pages/CategoryPage';
+import Admin from './pages/Admin';
+import Checkout from './pages/Checkout';
+import Orders from './pages/Orders';
+import Profile from './pages/Profile';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -53,17 +52,10 @@ export default function App() {
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return (
-          <main>
-            <HeroSection onNavigate={handleNavigate} />
-            <FeaturedProducts onNavigate={handleNavigate} />
-            <Categories onNavigate={handleNavigate} />
-            <ValueProposition />
-          </main>
-        );
+        return <Home onNavigate={handleNavigate} />;
       
       case 'products':
-        return <ProductCatalog selectedCategory="All Products" />;
+        return <Products />;
       
       case 'category-home-living':
       case 'category-kitchen-essentials':
@@ -73,143 +65,44 @@ export default function App() {
         return <CategoryPage category={getCategoryFromPage(currentPage)} />;
       
       case 'categories':
-        return (
-          <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-white">
-            <div className="container mx-auto px-4 py-16">
-              <div className="text-center mb-16">
-                <h1 className="text-4xl font-bold mb-4">
-                  All <span className="text-orange-500">Categories</span>
-                </h1>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                  Explore our complete range of carefully curated product categories
-                </p>
-              </div>
-              <Categories onNavigate={handleNavigate} />
-            </div>
-          </div>
-        );
+        return <CategoriesPage onNavigate={handleNavigate} />;
       
       case 'about':
         return <About />;
       
       case 'contact':
-        return (
-          <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-white">
-            <div className="container mx-auto px-4 py-16">
-              <div className="max-w-2xl mx-auto">
-                <div className="text-center mb-16">
-                  <h1 className="text-4xl font-bold mb-4">
-                    Get in <span className="text-orange-500">Touch</span>
-                  </h1>
-                  <p className="text-xl text-muted-foreground">
-                    We'd love to hear from you
-                  </p>
-                </div>
-                
-                <div className="bg-white rounded-2xl shadow-xl p-8 space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <h3 className="font-semibold mb-2">Email Us</h3>
-                      <p className="text-muted-foreground">hello@suni.com</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-2">Call Us</h3>
-                      <p className="text-muted-foreground">1-800-SUNI-HELP</p>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h3 className="font-semibold mb-2">Visit Our Store</h3>
-                    <p className="text-muted-foreground">
-                      123 Sunshine Blvd<br />
-                      San Francisco, CA 94102
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="font-semibold mb-2">Customer Support Hours</h3>
-                    <p className="text-muted-foreground">
-                      Monday - Friday: 9AM - 8PM PST<br />
-                      Saturday - Sunday: 10AM - 6PM PST
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
+        return <Contact />;
 
       // Admin
       case 'admin':
-        return <AdminDashboard onNavigate={handleNavigate} />;
+        return <Admin onNavigate={handleNavigate} />;
 
       // Checkout & Orders
       case 'checkout':
-        return <CheckoutPage onNavigate={handleNavigate} isLoggedIn={isLoggedIn} userEmail={userEmail} />;
+        return <Checkout onNavigate={handleNavigate} isLoggedIn={isLoggedIn} userEmail={userEmail} />;
       
       case 'order-confirmation':
-        return <OrderPage onNavigate={handleNavigate} isLoggedIn={isLoggedIn} orderType="confirmation" />;
+        return <Orders onNavigate={handleNavigate} isLoggedIn={isLoggedIn} orderType="confirmation" />;
       
       case 'order-history':
-        return <OrderPage onNavigate={handleNavigate} isLoggedIn={isLoggedIn} orderType="history" />;
+        return <Orders onNavigate={handleNavigate} isLoggedIn={isLoggedIn} orderType="history" />;
       
       case 'order-tracking':
-        return <OrderPage onNavigate={handleNavigate} isLoggedIn={isLoggedIn} orderType="tracking" />;
+        return <Orders onNavigate={handleNavigate} isLoggedIn={isLoggedIn} orderType="tracking" />;
 
       // Profile & Account
       case 'profile':
-        return <ProfilePage onNavigate={handleNavigate} isLoggedIn={isLoggedIn} profileType="account" />;
+        return <Profile onNavigate={handleNavigate} isLoggedIn={isLoggedIn} profileType="account" />;
       
       case 'guest-lookup':
-        return <ProfilePage onNavigate={handleNavigate} isLoggedIn={false} profileType="guest-lookup" />;
+        return <Profile onNavigate={handleNavigate} isLoggedIn={false} profileType="guest-lookup" />;
 
       // Login/Demo
       case 'login':
-        return (
-          <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-white flex items-center justify-center">
-            <div className="max-w-md w-full mx-4">
-              <div className="bg-white rounded-2xl shadow-xl p-8 space-y-6">
-                <div className="text-center">
-                  <h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
-                  <p className="text-muted-foreground">Sign in to your Suni account</p>
-                </div>
-                <div className="space-y-4">
-                  <button
-                    onClick={() => handleLogin('john.doe@email.com', false)}
-                    className="w-full p-4 text-left border rounded-lg hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="font-medium">Login as Customer</div>
-                    <div className="text-sm text-muted-foreground">john.doe@email.com</div>
-                  </button>
-                  <button
-                    onClick={() => handleLogin('admin@suni.com', true)}
-                    className="w-full p-4 text-left border rounded-lg hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="font-medium">Login as Admin</div>
-                    <div className="text-sm text-muted-foreground">admin@suni.com</div>
-                  </button>
-                  <button
-                    onClick={() => handleNavigate('guest-lookup')}
-                    className="w-full p-4 text-left border rounded-lg hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="font-medium">Guest Order Lookup</div>
-                    <div className="text-sm text-muted-foreground">Find your orders without an account</div>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
+        return <Login onNavigate={handleNavigate} onLogin={handleLogin} />;
       
       default:
-        return (
-          <main>
-            <HeroSection onNavigate={handleNavigate} />
-            <FeaturedProducts onNavigate={handleNavigate} />
-            <Categories onNavigate={handleNavigate} />
-            <ValueProposition />
-          </main>
-        );
+        return <Home onNavigate={handleNavigate} />;
     }
   };
 

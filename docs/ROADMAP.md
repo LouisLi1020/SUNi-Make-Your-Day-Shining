@@ -103,73 +103,72 @@ A personal side project to build a complete e-commerce platform demonstrating mo
 ### Phase 1.5: Frontend Integration (Completed)
 **Goal**: Integrate Figma designs into React components and establish frontend architecture
 
-- [x] **Frontend Architecture Integration**
-  - [x] Integrate page components from Figma into React pages
-  - [x] Create Layout component for unified page structure
-  - [x] Update Header and HeroSection components, remove props dependencies
-  - [x] Implement separation of concerns between pages and components
+- [x] **Figma Design Integration**
+  - [x] Integrate complete Figma e-commerce design into React
+  - [x] Implement all UI components (Header, Footer, Product Catalog, etc.)
+  - [x] Create comprehensive page components (Home, Products, Profile, Admin, Checkout, Orders)
   - [x] Add complete mock data structures (products.ts, users.ts)
-  - [x] Fix TypeScript linter errors
 
-**Milestone 1.5**: Frontend Figma designs successfully integrated into React components
+- [x] **Architecture Migration to Pages Pattern**
+  - [x] Analyze and understand Figma architecture
+  - [x] Create pages directory structure with proper separation
+  - [x] Migrate all page-level components to pages directory
+  - [x] Maintain all reusable components in components directory
+  - [x] Create Layout component for unified page structure
+  - [x] Fix all TypeScript linter errors
+
+**Milestone 1.5**: Complete frontend UI with Figma designs successfully integrated and migrated to Pages architecture
 
 ---
 
-### Phase 2: Frontend Development & MVP Completion (Weeks 5-8)
-**Goal**: Build React frontend to complete the MVP with full e-commerce functionality
+### Phase 2: API Integration & State Management (Current Phase)
+**Goal**: Connect frontend to backend API and implement proper state management
 
-#### Week 5: Frontend Foundation
-- [x] **React Application Setup**
-  - [x] Set up React with TypeScript and Vite
-  - [x] Configure routing with React Router
-  - [ ] Set up state management (Zustand or Context)
-  - [ ] Implement responsive design system
+#### Week 5-6: API Integration
+- [ ] **API Service Layer**
+  - [ ] Create API service functions for all endpoints
+  - [ ] Implement authentication service (login, register, logout)
+  - [ ] Create product service (list, detail, search)
+  - [ ] Implement cart service (add, update, remove)
+  - [ ] Create order service (create, list, track)
+  - [ ] Add payment service (Stripe integration)
 
-- [x] **Core UI Components**
-  - [x] Create reusable component library
-  - [x] Implement authentication UI (login/register)
-  - [x] Build navigation and layout components
-  - [ ] Add loading states and error handling
+- [ ] **State Management**
+  - [ ] Set up Zustand stores (auth, cart, products, orders)
+  - [ ] Implement authentication state management
+  - [ ] Create cart state with persistence
+  - [ ] Add product filtering and search state
+  - [ ] Implement order management state
 
-#### Week 6: Product Display & Shopping
-- [x] **Product Catalog**
-  - [x] Create product listing page with basic filters
-  - [x] Build product detail pages
-  - [x] Implement search functionality
-  - [x] Add product image display
+#### Week 7: Frontend-Backend Connection
+- [ ] **Data Flow Implementation**
+  - [ ] Replace mock data with API calls
+  - [ ] Implement loading states and error handling
+  - [ ] Add form validation and submission
+  - [ ] Create error boundary components
+  - [ ] Implement optimistic UI updates
 
-- [x] **Shopping Cart Interface**
-  - [x] Build cart sidebar/dropdown
-  - [x] Create cart management UI
-  - [x] Implement cart persistence
-  - [x] Add cart validation
+- [ ] **User Experience Enhancement**
+  - [ ] Add loading spinners and skeletons
+  - [ ] Implement toast notifications
+  - [ ] Add confirmation dialogs
+  - [ ] Implement proper error messages
+  - [ ] Add success feedback
 
-#### Week 7: Checkout & User Experience
-- [x] **Checkout Flow**
-  - [x] Create checkout process (guest & member)
-  - [x] Implement address management
-  - [ ] Add payment integration (Stripe Elements)
-  - [x] Build order confirmation pages
+#### Week 8: Testing & Polish
+- [ ] **Functionality Testing**
+  - [ ] Test all user flows (browse, cart, checkout)
+  - [ ] Test admin functionality (product/order management)
+  - [ ] Test authentication flows (guest, member, admin)
+  - [ ] Test error handling and edge cases
 
-- [x] **User Dashboard**
-  - [x] Create user profile management
-  - [x] Build order history interface
-  - [x] Implement order tracking
-  - [x] Add basic account settings
+- [ ] **UI/UX Polish**
+  - [ ] Ensure responsive design across devices
+  - [ ] Fix any visual inconsistencies
+  - [ ] Optimize performance (lazy loading, code splitting)
+  - [ ] Add accessibility improvements
 
-#### Week 8: Admin Panel
-- [x] **Admin Dashboard**
-  - [x] Create admin authentication
-  - [x] Build product management interface
-  - [x] Implement order management system
-  - [x] Add basic user management
-
-- [x] **Content Management**
-  - [x] Create category management
-  - [x] Implement inventory tracking UI
-  - [x] Add basic order analytics
-
-**Milestone 2**: Complete MVP with full e-commerce functionality
+**Milestone 2**: Complete MVP with full frontend-backend integration
 
 ---
 
@@ -207,28 +206,26 @@ A personal side project to build a complete e-commerce platform demonstrating mo
 
 ---
 
-### Phase 4: Future Considerations (Optional)
-**Goal**: Consider additional features if the project evolves beyond a side project
+### Phase 4: Future Enhancements (Deferred)
+**Goal**: Additional features to enhance the platform (deferred to post-MVP)
 
 #### Potential Future Features
-- [ ] **Activity Booking System** (Separate project consideration)
-  - [ ] Calendar-based booking system
-  - [ ] Guide/instructor management
-  - [ ] Activity scheduling and availability
-  - [ ] Mixed cart (products + activities)
+- [ ] **Water Activity Booking System** (Deferred)
+  - Calendar-based booking system
+  - Guide/instructor management
+  - Activity scheduling and availability
+  - Mixed cart (products + activities)
+  - **Note**: This feature is deferred to focus on core e-commerce functionality first
 
-- [ ] **Advanced Analytics** (If needed for portfolio)
-  - [ ] Basic Google Analytics integration
-  - [ ] Simple sales dashboard
-  - [ ] User behavior tracking
+- [ ] **Advanced Features** (Post-MVP)
+  - Multi-language support (Traditional Chinese, English)
+  - Advanced product recommendations
+  - Customer review and rating system
+  - Advanced analytics and reporting
+  - Email marketing integration
+  - Mobile app development
 
-- [ ] **Enterprise Features** (Only if project scales)
-  - [ ] Multi-language support
-  - [ ] Advanced security features
-  - [ ] API documentation
-  - [ ] Third-party integrations
-
-**Note**: These features are optional and should only be considered if the project evolves beyond its current scope as a side project.
+**Note**: Water activity booking and other advanced features are intentionally deferred to maintain focus on delivering a solid e-commerce MVP. These will be reconsidered after the core platform is stable and operational.
 
 ---
 

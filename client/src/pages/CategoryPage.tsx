@@ -1,6 +1,6 @@
-import { ProductCatalog } from './ProductCatalog';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { Button } from './ui/button';
+import { ProductCatalog } from '../components/ProductCatalog';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { Button } from '../components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
 interface CategoryPageProps {
@@ -65,7 +65,7 @@ const categoryInfo = {
   }
 };
 
-export function CategoryPage({ category }: CategoryPageProps) {
+export default function CategoryPage({ category }: CategoryPageProps) {
   const info = categoryInfo[category as keyof typeof categoryInfo];
 
   if (!info) {
@@ -136,3 +136,4 @@ export function CategoryPage({ category }: CategoryPageProps) {
     </div>
   );
 }
+

@@ -12,17 +12,17 @@ import {
   Download,
   RotateCcw
 } from 'lucide-react';
-import { Button } from './ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { Separator } from './ui/separator';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
-import { Textarea } from './ui/textarea';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { mockOrders, Order } from '../data/users';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { Separator } from '../components/ui/separator';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { Textarea } from '../components/ui/textarea';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../components/ui/dialog';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { mockOrders, type Order } from '../data/users';
 
 interface OrderPageProps {
   onNavigate: (page: string) => void;
@@ -31,7 +31,7 @@ interface OrderPageProps {
   orderId?: string;
 }
 
-export function OrderPage({ onNavigate, isLoggedIn, orderType, orderId }: OrderPageProps) {
+export default function Orders({ onNavigate, isLoggedIn, orderType }: OrderPageProps) {
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(
     orderType === 'confirmation' ? mockOrders[0] : null
   );
